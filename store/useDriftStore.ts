@@ -1,20 +1,22 @@
 import { create } from 'zustand';
-import { DriftClient, UserAccount, PerpPosition } from '@drift-labs/sdk';
+import { DriftClient, UserAccount } from '@drift-labs/sdk';
 
 interface DriftStore {
   client: DriftClient | null;
   subaccounts: UserAccount[];
-  positions: PerpPosition[];
-  setClient: (client: DriftClient) => void;
+  isViewingOtherWallet: boolean;
+  setClient: (client: DriftClient | null) => void;
   setSubaccounts: (subaccounts: UserAccount[]) => void;
-  setPositions: (positions: PerpPosition[]) => void;
+  setIsViewingOtherWallet: (isViewing: boolean) => void;
 }
 
 export const useDriftStore = create<DriftStore>((set) => ({
   client: null,
   subaccounts: [],
-  positions: [],
+  isViewingOtherWallet: false,
   setClient: (client) => set({ client }),
-  setSubaccounts: (subaccounts) => set({ subaccounts }),
-  setPositions: (positions) => set({ positions }),
+  setSubaccounts: (subaccounts) => {
+    set({ subaccounts });
+  },
+  setIsViewingOtherWallet: (isViewing) => set({ isViewingOtherWallet: isViewing }),
 })); 

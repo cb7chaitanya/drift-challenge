@@ -1,27 +1,24 @@
 'use client';
 
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
 import { FC, ReactNode, useMemo } from 'react';
 
-require('@solana/wallet-adapter-react-ui/styles.css');
+import '@solana/wallet-adapter-react-ui/styles.css';
 
 interface Props {
   children: ReactNode;
 }
 
 export const WalletContextProvider: FC<Props> = ({ children }) => {
-  const network = WalletAdapterNetwork.Devnet;
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const RPC_KEY = process.env.NEXT_PUBLIC_HELIUS_RPC_KEY;
+  const endpoint = useMemo(() => 
+    `https://mainnet.helius-rpc.com/?api-key=${RPC_KEY}`, 
+    [RPC_KEY]
+  );
   
-  // Remove WalletConnect adapter for now since it's causing issues
   const wallets = useMemo(
-    () => [
-      new PhantomWalletAdapter(),
-    ],
+    () => [],
     []
   );
 
