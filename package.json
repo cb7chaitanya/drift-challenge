@@ -18,6 +18,7 @@
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-switch": "^1.2.2",
     "@radix-ui/react-tooltip": "^1.2.3",
+    "@solana/spl-token": "^0.4.13",
     "@solana/wallet-adapter-base": "^0.9.24",
     "@solana/wallet-adapter-react": "^0.15.36",
     "@solana/wallet-adapter-react-ui": "^0.9.36",
