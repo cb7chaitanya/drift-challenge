@@ -5,6 +5,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/sonner";
 import { GeistSans } from 'geist/font/sans';
 import { JetBrains_Mono } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/react"
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
       <body className={GeistSans.className}>
+        <Analytics />
         <WalletContextProvider>{children}</WalletContextProvider>
         <Toaster />
       </body>
